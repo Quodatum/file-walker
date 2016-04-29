@@ -1,0 +1,21 @@
+<!-- @see http://cxan.org/faq#add-pkg -->
+<repo abbrev="file-walker">
+  <pkg abbrev="file-walker" id="https://github.com/Quodatum/file-walker">
+    <name>https://github.com/Quodatum/file-walker</name>
+    <abstract>File list and search in the XProc style</abstract>
+    <author id="abunce">Andy Bunce</author>
+    <maintainer id="abunce">Andy Bunce</maintainer>
+    <category id="libs">Libraries</category>
+    <home>https://github.com/Quodatum/file-walker</home>
+    <tag>file</tag>
+    <tag>xproc</tag>
+    <tag>list</tag>
+    <version num="0.0.1">
+      <dependency processor="basex"/>
+      <file name="file-walker-0.0.1.xar" role="pkg"/>
+    </version>
+    <version num="0.0.2">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
+  </pkg>
+</repo>
