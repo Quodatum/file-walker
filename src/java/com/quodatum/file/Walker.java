@@ -16,6 +16,7 @@ import org.basex.query.value.ValueBuilder;
 import org.basex.query.value.node.FElem;
 
 public class Walker extends SimpleFileVisitor<Path> {
+	final String cns="http://www.w3.org/ns/xproc-step";
 	ValueBuilder vb = new ValueBuilder();
 	void FileWork(ValueBuilder avb ){
 		vb=avb;
@@ -30,7 +31,8 @@ public class Walker extends SimpleFileVisitor<Path> {
     @Override
     public FileVisitResult visitFile(Path file,
                                    BasicFileAttributes attr) {
-    	FElem elem = new FElem("file").add("name", file.toString());
+    	FElem elem = new FElem("file",cns)
+    		.add("name", file.getFileName().toString());
     	vb.add(elem);
         return CONTINUE;
     }
@@ -39,7 +41,9 @@ public class Walker extends SimpleFileVisitor<Path> {
     @Override
     public FileVisitResult postVisitDirectory(Path dir,
                                           IOException exc) {
-    	FElem elem = new FElem("dir").add("name", dir.toString());
+    	FElem elem = new FElem("directory",cns)
+    		.add("name", dir.getFileName().toString())
+    		.add("xml:base", dir.toString());
     	vb.add(elem);
         return CONTINUE;
     }
@@ -52,7 +56,8 @@ public class Walker extends SimpleFileVisitor<Path> {
     @Override
     public FileVisitResult visitFileFailed(Path file,
                                        IOException exc) {
-    	FElem elem = new FElem("err").add("name", file.toString());
+    	FElem elem = new FElem("error",cns)
+    		.add("name", file.toString());
     	vb.add(elem);
         return CONTINUE;
     }

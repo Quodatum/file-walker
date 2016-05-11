@@ -1,6 +1,6 @@
 <xqdoc:xqdoc xmlns:xqdoc="http://www.xqdoc.org/1.0">
   <xqdoc:control>
-    <xqdoc:date>2016-05-11T12:20:24.415+01:00</xqdoc:date>
+    <xqdoc:date>2016-05-11T13:40:39.256+01:00</xqdoc:date>
     <xqdoc:version>1.1</xqdoc:version>
   </xqdoc:control>
   <xqdoc:module type="library">
@@ -137,6 +137,22 @@
       </xqdoc:parameters>
       <xqdoc:return>
         <xqdoc:type>xs:string</xqdoc:type>
+      </xqdoc:return>
+    </xqdoc:function>
+    <xqdoc:function arity="1">
+      <xqdoc:comment>
+        <xqdoc:description>apply default options</xqdoc:description>
+      </xqdoc:comment>
+      <xqdoc:name>xpf:defaults</xqdoc:name>
+      <xqdoc:signature>declare function xpf:defaults($options as map(*)) as map(*)</xqdoc:signature>
+      <xqdoc:parameters>
+        <xqdoc:parameter>
+          <xqdoc:name>options</xqdoc:name>
+          <xqdoc:type>map(*)</xqdoc:type>
+        </xqdoc:parameter>
+      </xqdoc:parameters>
+      <xqdoc:return>
+        <xqdoc:type>map(*)</xqdoc:type>
       </xqdoc:return>
     </xqdoc:function>
     <xqdoc:function arity="1">

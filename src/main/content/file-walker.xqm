@@ -16,7 +16,7 @@ declare variable $xpf:default-options:=map{
   :)                            
 declare function xpf:directory-list($path as xs:string,$options as map(*)) as element(c:directory)
 {
-let $options:=map:merge(($xpf:default-options,$options))
+let $options:=xpf:defaults($options)
 return <c:directory name="{file:name($path)}" xml:base="{file:path-to-uri($path)}">{
     Q{java:com.quodatum.file.Runner}filewalk($path)
   }</c:directory>
@@ -33,7 +33,7 @@ declare function xpf:directory-list($path as xs:string) as element(c:directory)
   :)                            
 declare function xpf:directory-list-xq($path as xs:string,$options as map(*)) as element(c:directory)
 {
-let $options:=map:merge(($xpf:default-options,$options))
+let $options:=xpf:defaults($options)
 let $files:=file:list($path,-1=$options?depth)
 return 
     <c:directory name="{file:name($path)}" xml:base="{file:path-to-uri($path)}">
@@ -72,6 +72,13 @@ declare function xpf:resolve-path($c as element(*)) as xs:string
 declare function xpf:name($c as element(*)) as xs:string
 {
     $c/@name/string()
+};
+(:~
+ : apply default options
+ :)
+declare function xpf:defaults($options as map(*)) as map(*)
+{
+map:merge(($xpf:default-options,$options))
 };
 
 (:~
