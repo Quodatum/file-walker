@@ -1,4 +1,4 @@
-<package xmlns="http://cxan.org/ns/package" id="xparse">
+<package xmlns="http://cxan.org/ns/package" id="quodatum-files">
     <abstract>File list and search in the XProc style</abstract>
     <author id="abunce">Andy Bunce</author>
     <maintainer id="abunce">Andy Bunce</maintainer>
