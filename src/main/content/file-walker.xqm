@@ -1,18 +1,40 @@
 (:~ 
  : XProc influenced file system tools
+ : @see l:recursive-directory-list http://xproc.org/library/
  :@author Andy Bunce
  :@version 0.2
  :)
 module namespace xpf = 'quodatum.file.walker';
 declare namespace c="http://www.w3.org/ns/xproc-step";
 
- 
- (:~
-  : list contents
+declare variable $xpf:default-options:=map{
+    "depth":0
+    };
+
+(:~
+  : list contents using java
   :)                            
 declare function xpf:directory-list($path as xs:string,$options as map(*)) as element(c:directory)
 {
-let $files:=file:list($path)
+let $options:=map:merge(($xpf:default-options,$options))
+return <c:directory name="{file:name($path)}" xml:base="{file:path-to-uri($path)}">{
+    Q{java:com.quodatum.file.Runner}filewalk($path)
+  }</c:directory>
+};
+
+
+declare function xpf:directory-list($path as xs:string) as element(c:directory)
+{
+    xpf:directory-list($path,map{})
+};
+
+(:~
+  : list contents using xquery
+  :)                            
+declare function xpf:directory-list-xq($path as xs:string,$options as map(*)) as element(c:directory)
+{
+let $options:=map:merge(($xpf:default-options,$options))
+let $files:=file:list($path,-1=$options?depth)
 return 
     <c:directory name="{file:name($path)}" xml:base="{file:path-to-uri($path)}">
         {for $f in $files
@@ -24,11 +46,10 @@ return
 };
 
 
-declare function xpf:directory-list($path as xs:string) as element(c:directory)
+declare function xpf:directory-list-xq($path as xs:string) as element(c:directory)
 {
-    xpf:directory-list($path,map{})
+    xpf:directory-list-xq($path,map{})
 };
-
 (:~
  : full path to file
  :)
