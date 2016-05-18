@@ -17,9 +17,8 @@ declare variable $xpf:default-options:=map{
 declare function xpf:directory-list($path as xs:string,$options as map(*)) as element(c:directory)
 {
 let $options:=xpf:defaults($options)
-return <c:directory name="{file:name($path)}" xml:base="{file:path-to-uri($path)}">{
-    Q{java:com.quodatum.file.Runner}filewalk($path)
-  }</c:directory>
+return Q{java:com.quodatum.file.Runner}filewalk($path,$options)
+
 };
 
 
@@ -34,17 +33,25 @@ declare function xpf:directory-list($path as xs:string) as element(c:directory)
 declare function xpf:directory-list-xq($path as xs:string,$options as map(*)) as element(c:directory)
 {
 let $options:=xpf:defaults($options)
-let $files:=file:list($path,-1=$options?depth)
+return xpf:directory-list-xq2($path ,$options,$options?depth)
+};
+
+(:~
+  : list contents using xquery
+  :)                            
+declare function xpf:directory-list-xq2($path as xs:string,$options as map(*),$depth as xs:integer) as element(c:directory)
+{
+let $files:=file:children($path)
 return 
     <c:directory name="{file:name($path)}" xml:base="{file:path-to-uri($path)}">
         {for $f in $files
-        let $full:=file:resolve-path($f,$path)
-        let $name:=file:name($full)
-        return if(file:is-dir($full)) then <c:directory name="{$name}"/> else <c:file name="{$name}"/>
+        return if(file:is-file($f))           
+               then <c:file name="{file:name($f)}"/>
+               else if($depth eq 0) then ()
+               else xpf:directory-list-xq2($f,$options, $depth -1)
         }
     </c:directory>
 };
-
 
 declare function xpf:directory-list-xq($path as xs:string) as element(c:directory)
 {

@@ -1,8 +1,11 @@
 import module namespace fw="quodatum.file.walker";
 declare namespace c="http://www.w3.org/ns/xproc-step";
-(: fw:web-resolve("")=> fw:directory-list-xq() :)
-let $r:=fw:web-resolve("")=> fw:directory-list(map{"depth":-1})
-return $r
+declare variable $large:="Z:\pictures\Pictures";
+declare variable $small:="Z:\recordings\radio";
+declare variable $local:="C:\Users\andy\Desktop\radio";
 
+let $r:= fw:directory-list($small,map{"depth":-1})
+return $r
+ 
 
  
