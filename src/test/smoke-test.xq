@@ -4,7 +4,7 @@ declare variable $large:="Z:\pictures\Pictures";
 declare variable $small:="Z:\recordings\radio";
 declare variable $local:="C:\Users\andy\Desktop\radio";
 
-let $r:= fw:directory-list($small,map{"depth":-1})
+let $r:= fw:directory-list-xq($small,map{"depth":-1})
 return $r
  
 

@@ -5,7 +5,7 @@ import module namespace fw="quodatum.file.walker";
 declare namespace c="http://www.w3.org/ns/xproc-step";
 fw:directory-list($test:dir,map{"depth":-1})
 ````
-see https://www.w3.org/TR/xproc/#c.directory-list
+
 ````
 <directory xmlns="http://www.w3.org/ns/xproc-step" name="radio" xml:base="file:///Z:/recordings/radio/">
   <directory name="radio" xml:base="file:///Z:/recordings/radio/">
@@ -32,17 +32,50 @@ see https://www.w3.org/TR/xproc/#c.directory-list
   </directory>
 </directory>
 ````
+see https://www.w3.org/TR/xproc/#c.directory-list
+
+
+## Performance
 Also testing the performance of the built-in file module against 
 a Java `SimpleFileVisitor` implementation.
 https://docs.oracle.com/javase/7/docs/api/java/nio/file/SimpleFileVisitor.html 
+The result depend a lot on the environment. Results are of 0.2.8 accessing a folder tree containing 25,000 files across a LAN. 
 
-## Performance
-Currently the file module is winning:
+### Velvet - ReadyNAS server
 ````
-<testsuites time="PT9M22.656S">
-  <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/test.xqm" time="PT9M22.654S" tests="2" failures="0" errors="0" skipped="0">
-    <testcase name="directory-list" time="PT5M36.935S"/>
-    <testcase name="directory-list-xq" time="PT3M45.697S"/>
+velvet
+<testsuites time="PT10M46.481S">
+  <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/test.xqm" time="PT10M46.479S" tests="2" failures="0" errors="0" skipped="0">
+    <testcase name="directory-list" time="PT1M40.283S"/>
+    <testcase name="directory-list-xq" time="PT9M6.185S"/>
+  </testsuite>
+</testsuites>
+
+<testsuites time="PT10M24.341S">
+  <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/test.xqm" time="PT10M24.341S" tests="2" failures="0" errors="0" skipped="0">
+    <testcase name="directory-list" time="PT1M35.96S"/>
+    <testcase name="directory-list-xq" time="PT8M48.37S"/>
+  </testsuite>
+</testsuites>
+````
+
+### Odroid xu4
+cpuctrl -s -g "powersave" -m 300M -M 1G
+
+````
+<testsuites time="PT8M33.356S">
+  <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/test.xqm" time="PT8M33.352S" tests="2" failures="0" errors="0" skipped="0">
+    <testcase name="directory-list" time="PT4M28.039S"/>
+    <testcase name="directory-list-xq" time="PT4M5.293S"/>
+  </testsuite>
+</testsuites>
+````
+cpuctrl -s    -M 1.4G -g performance
+````
+<testsuites time="PT3M31.073S">
+  <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/test.xqm" time="PT3M31.073S" tests="2" failures="0" errors="0" skipped="0">
+    <testcase name="directory-list" time="PT1M45.852S"/>
+    <testcase name="directory-list-xq" time="PT1M45.213S"/>
   </testsuite>
 </testsuites>
 

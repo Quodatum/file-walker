@@ -15,9 +15,8 @@ import org.basex.query.value.map.Map;
 public class Runner {
 	public static Value filewalk(final String path,final Map options ) throws IOException {
 		Path startingDir = Paths.get(path);	
-		System.out.print(options);
 		EnumSet<FileVisitOption> opts = EnumSet.of(FileVisitOption.FOLLOW_LINKS);
-		Walker walk = new Walker(startingDir);
+		Walker walk = new Walker(options);
 		Files.walkFileTree(startingDir,opts, Integer.MAX_VALUE, walk);	
 		return walk.result();
 	}

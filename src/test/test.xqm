@@ -4,9 +4,9 @@ module namespace test = 'http://basex.org/modules/xqunit-tests';
  :)
 import module namespace fw="quodatum.file.walker";
 declare namespace c="http://www.w3.org/ns/xproc-step";
-declare variable $test:dirx:="\\ODROID-JESSIE\sda1\pictures\Pictures";
-declare variable $test:dir:="P:\pictures\Pictures";
- 
+declare variable $test:odroid:="\\ODROID-JESSIE\sda1\pictures\Pictures";
+declare variable $test:velvet:="P:\pictures\Pictures";
+declare variable $test:dir:=$test:odroid; 
 (:~ directory-list :)
 declare
   %unit:test
