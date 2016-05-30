@@ -39,7 +39,8 @@ see https://www.w3.org/TR/xproc/#c.directory-list
 Also testing the performance of the built-in file module against 
 a Java `SimpleFileVisitor` implementation.
 https://docs.oracle.com/javase/7/docs/api/java/nio/file/SimpleFileVisitor.html 
-The result depend a lot on the environment. Results are of 0.2.8 accessing a folder tree containing 25,000 files across a LAN. 
+The result depends a lot on the environment. Results listing a folder tree containing 25,000 files across a LAN. With version 0.2.8.
+Apart part the ,strange but repeatable, ReadyNAS xq result there is no significant performance gain from the Java implementation. 
 
 ### Velvet - ReadyNAS server
 ````
@@ -70,7 +71,7 @@ cpuctrl -s -g "powersave" -m 300M -M 1G
   </testsuite>
 </testsuites>
 ````
-cpuctrl -s    -M 1.4G -g performance
+cpuctrl -s  -g performance  -M 1.4G 
 ````
 <testsuites time="PT3M31.073S">
   <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/test.xqm" time="PT3M31.073S" tests="2" failures="0" errors="0" skipped="0">
@@ -80,3 +81,4 @@ cpuctrl -s    -M 1.4G -g performance
 </testsuites>
 
 ````
+Running on server takes about 44sec.
