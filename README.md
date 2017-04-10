@@ -7,12 +7,14 @@ declare namespace c="http://www.w3.org/ns/xproc-step";
 fw:directory-list($test:dir,$options)
 ````
 ##Options
-maxDepth: integer
-showFileInfo: boolean
-maxFiles: integer
-include-filter:string @TODO
-exclude-filter:string @TODO
 
+* maxDepth: integer
+* showFileInfo: boolean
+* maxFiles: integer
+* include-filter:string @TODO
+* exclude-filter:string @TODO
+
+## Sample output
 ````
 <directory xmlns="http://www.w3.org/ns/xproc-step" name="radio" xml:base="file:///Z:/recordings/radio/">
   <directory name="radio" xml:base="file:///Z:/recordings/radio/">
