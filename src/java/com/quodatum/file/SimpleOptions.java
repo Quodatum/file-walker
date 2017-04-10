@@ -8,6 +8,7 @@ import org.basex.query.value.item.Item;
 import org.basex.query.value.item.Str;
 import org.basex.query.value.map.Map;
 import org.basex.util.InputInfo;
+import org.basex.util.Token;
 
 public class SimpleOptions {
 
@@ -41,5 +42,19 @@ public class SimpleOptions {
             return def;
         }
     }
-
+    // get int key from map or default def if missing/invalid 
+    static  String mapOption(Map m, String skey, String def) throws QueryException {
+        Item key = Str.get(skey);
+        InputInfo ii = new InputInfo("XQueryMaps.java", 0, 0);
+        Value v = m.get(key, ii);
+        if (v.isEmpty()) {
+            return def;
+        }
+        Item item = v.itemAt(0);
+        if (item.type.isStringOrUntyped()) {
+            return Token.string(item.string(null));
+        } else {
+            return def;
+        }
+    }
 }

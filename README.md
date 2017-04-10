@@ -8,11 +8,13 @@ fw:directory-list($test:dir,$options)
 ````
 ## Options
 
-* maxDepth: integer
-* showFileInfo: boolean
-* maxFiles: integer
-* include-filter:string @TODO
-* exclude-filter:string @TODO
+* max-depth: integer directory depth to scan, -1 all
+* include-info: boolean add @size and @last-modified attributes to o/p
+* max-files: integer stop scanning after finding this number of files
+* follow-links: boolean
+* include-filter:string regex  applied only to file names
+* exclude-filter:string regex  applied only to file names
+* skip-filter:string regex applied only to directory names
 
 ## Sample output
 ````

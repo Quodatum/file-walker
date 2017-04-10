@@ -1,6 +1,11 @@
 package com.quodatum.file;
 
-// 
+/*
+ * @author andy bunce
+ * @copyright Quodatum Ltd
+ * @date 2015-2017
+ * @licence Apache 2
+ */
 import java.io.IOException;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
@@ -20,21 +25,26 @@ public class Runner extends QueryModule {
     //@TODO use this
 	public static class RunnerOptions extends Options {
 		/** Max depth of directories to scan. */
-		public static final NumberOption MAXDEPTH = new NumberOption("maxDepth", Integer.MAX_VALUE);
-		public static final NumberOption MAXFILES = new NumberOption("maxFiles", Integer.MAX_VALUE);
+		public static final NumberOption MAX_DEPTH = new NumberOption("max-depth", Integer.MAX_VALUE);
+		public static final NumberOption MAX_FILES = new NumberOption("max-files", Integer.MAX_VALUE);
 		/** add attrs eg size. */
-		public static final BooleanOption SHOWFILEINFO = new BooleanOption("showFileInfo", false);
+		public static final BooleanOption INCLUDE_INFO = new BooleanOption("include-info", false);
+		public static final BooleanOption FOLLOW_LINKS = new BooleanOption("follow-links", false);
 		/** Query base-uri. */
 		public static final StringOption INCLUDE_FILTER = new StringOption("include-filter");
 		public static final StringOption EXCLUDE_FILTER = new StringOption("exclude-filter");
+	    public static final StringOption SKIP_FILTER = new StringOption("skip-filter");
 	}
 
 	public Value filewalk(final String path, final Map options) throws IOException, QueryException {
 		//FnTrace.trace("BY".getBytes(), "TEST".getBytes(), queryContext);
 		Path startingDir = Paths.get(path);
-		EnumSet<FileVisitOption> walkopts = EnumSet.of(FileVisitOption.FOLLOW_LINKS);
 		
-		int maxDepth=SimpleOptions.mapOption(options,"maxDepth",Integer.MAX_VALUE);
+		boolean followLinks=SimpleOptions.mapOption(options,"follow-links",false);
+		EnumSet<FileVisitOption> walkopts = (followLinks)?EnumSet.of(FileVisitOption.FOLLOW_LINKS):EnumSet.noneOf(FileVisitOption.class);
+		
+		int maxDepth=SimpleOptions.mapOption(options,"max-depth",Integer.MAX_VALUE);
+		if(-1==maxDepth)maxDepth=Integer.MAX_VALUE;
 		
 		// String s=options.dbl(ii)
 		Walker walk = new Walker(options, queryContext);
