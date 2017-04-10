@@ -1,10 +1,17 @@
 # file-walker
 File list  and search in the XProc style. 
+
 ````
-import module namespace fw="quodatum.file.walker";
+import module namespace fw="quodatum:file.walker";
 declare namespace c="http://www.w3.org/ns/xproc-step";
-fw:directory-list($test:dir,map{"depth":-1})
+fw:directory-list($test:dir,$options)
 ````
+##Options
+maxDepth: integer
+showFileInfo: boolean
+maxFiles: integer
+include-filter:string @TODO
+exclude-filter:string @TODO
 
 ````
 <directory xmlns="http://www.w3.org/ns/xproc-step" name="radio" xml:base="file:///Z:/recordings/radio/">
@@ -33,7 +40,13 @@ fw:directory-list($test:dir,map{"depth":-1})
 </directory>
 ````
 see https://www.w3.org/TR/xproc/#c.directory-list
-
+## file info
+readable    xs:boolean  “true” if the object is readable.
+writable    xs:boolean  “true” if the object file is writable.
+hidden  xs:boolean  “true” if the object is hidden.
+last-modified   xs:dateTime     The last modification time of the object expressed in UTC.
+size    xs:integer  The size of the object in bytes.
+https://www.w3.org/XML/XProc/docs/fileos/#pf-info
 
 ## Performance
 Also testing the performance of the built-in file module against 

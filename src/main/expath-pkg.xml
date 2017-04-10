@@ -1,13 +1,13 @@
 <package xmlns="http://expath.org/ns/pkg"
          name="https://github.com/Quodatum/file-walker"
          abbrev="quodatum-files"
-         version="0.2.8"
+         version="0.3.9"
          spec="1.0">
 
    <title>File list and search in the XProc style</title>
    <dependency processor="basex" />
    <xquery> 
-     <namespace>quodatum.file.walker</namespace>
+     <namespace>quodatum:file.walker</namespace>
      <file>file-walker.xqm</file>
    </xquery>
 

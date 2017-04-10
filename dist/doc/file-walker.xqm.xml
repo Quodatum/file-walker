@@ -1,10 +1,10 @@
 <xqdoc:xqdoc xmlns:xqdoc="http://www.xqdoc.org/1.0">
   <xqdoc:control>
-    <xqdoc:date>2016-05-30T14:36:26.863+01:00</xqdoc:date>
+    <xqdoc:date>2017-04-10T13:12:52.133+01:00</xqdoc:date>
     <xqdoc:version>1.1</xqdoc:version>
   </xqdoc:control>
   <xqdoc:module type="library">
-    <xqdoc:uri>quodatum.file.walker</xqdoc:uri>
+    <xqdoc:uri>quodatum:file.walker</xqdoc:uri>
     <xqdoc:name>file-walker.xqm</xqdoc:name>
     <xqdoc:comment>
       <xqdoc:description>XProc influenced file system tools</xqdoc:description>
@@ -14,10 +14,15 @@
     </xqdoc:comment>
   </xqdoc:module>
   <xqdoc:namespaces>
-    <xqdoc:namespace prefix="xpf" uri="quodatum.file.walker"/>
+    <xqdoc:namespace prefix="xpf" uri="quodatum:file.walker"/>
+    <xqdoc:namespace prefix="run" uri="java:com.quodatum.file.Runner"/>
     <xqdoc:namespace prefix="c" uri="http://www.w3.org/ns/xproc-step"/>
   </xqdoc:namespaces>
-  <xqdoc:imports/>
+  <xqdoc:imports>
+    <xqdoc:import type="library">
+      <xqdoc:uri>java:com.quodatum.file.Runner</xqdoc:uri>
+    </xqdoc:import>
+  </xqdoc:imports>
   <xqdoc:variables>
     <xqdoc:variable>
       <xqdoc:name>xpf:default-options</xqdoc:name>

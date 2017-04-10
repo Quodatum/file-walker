@@ -1,4 +1,4 @@
 <package xmlns="http://www.basex.org/modules/pkg">
-   <jar>quodatum-files-0.2.8.jar</jar>
+   <jar>quodatum-files-0.3.9.jar</jar>
    <class>com.quodatum.file.Runner</class>
 </package>

@@ -2,7 +2,7 @@ module namespace test = 'http://basex.org/modules/xqunit-tests';
 (:~
  : unit tests for filewalker module
  :)
-import module namespace fw="quodatum.file.walker";
+import module namespace fw="quodatum:file.walker";
 declare namespace c="http://www.w3.org/ns/xproc-step";
 declare variable $test:odroid:="\\ODROID-JESSIE\sda1\pictures\Pictures";
 declare variable $test:velvet:="P:\pictures\Pictures";

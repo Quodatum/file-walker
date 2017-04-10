@@ -4,7 +4,9 @@
  :@author Andy Bunce
  :@version 0.2
  :)
-module namespace xpf = 'quodatum.file.walker';
+module namespace xpf = 'quodatum:file.walker';
+import module namespace run="java:com.quodatum.file.Runner";
+
 declare namespace c="http://www.w3.org/ns/xproc-step";
 
 declare variable $xpf:default-options:=map{
@@ -17,7 +19,7 @@ declare variable $xpf:default-options:=map{
 declare function xpf:directory-list($path as xs:string,$options as map(*)) as element(c:directory)
 {
 let $options:=xpf:defaults($options)
-return Q{java:com.quodatum.file.Runner}filewalk($path,$options)
+return run:filewalk($path,$options)
 
 };
 
@@ -85,7 +87,7 @@ declare function xpf:name($c as element(*)) as xs:string
  :)
 declare function xpf:defaults($options as map(*)) as map(*)
 {
-map:merge(($xpf:default-options,$options))
+map:merge(($options,$xpf:default-options))
 };
 
 (:~
