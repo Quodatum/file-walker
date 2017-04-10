@@ -6,7 +6,7 @@ import module namespace fw="quodatum:file.walker";
 declare namespace c="http://www.w3.org/ns/xproc-step";
 fw:directory-list($test:dir,$options)
 ````
-##Options
+## Options
 
 * maxDepth: integer
 * showFileInfo: boolean
