@@ -12,8 +12,8 @@ import org.basex.util.Token;
 
 public class SimpleOptions {
 
- // get int key from map or default def if missing/invalid 
-    static  int mapOption(Map m, String skey, int def) throws QueryException {
+    // get int key from map or default def if missing/invalid
+    static int mapOption(final Map m, final String skey, final int def) throws QueryException {
         Item key = Str.get(skey);
         InputInfo ii = new InputInfo("XQueryMaps.java", 0, 0);
         Value v = m.get(key, ii);
@@ -27,8 +27,9 @@ public class SimpleOptions {
             return def;
         }
     }
- // get int key from map or default def if missing/invalid 
-    static  boolean mapOption(Map m, String skey, boolean def) throws QueryException {
+
+    // get int key from map or default def if missing/invalid
+    static boolean mapOption(final Map m, final String skey, final boolean def) throws QueryException {
         Item key = Str.get(skey);
         InputInfo ii = new InputInfo("XQueryMaps.java", 0, 0);
         Value v = m.get(key, ii);
@@ -42,8 +43,9 @@ public class SimpleOptions {
             return def;
         }
     }
-    // get int key from map or default def if missing/invalid 
-    static  String mapOption(Map m, String skey, String def) throws QueryException {
+
+    // get int key from map or default def if missing/invalid
+    static String mapOption(final Map m, final String skey, final String def) throws QueryException {
         Item key = Str.get(skey);
         InputInfo ii = new InputInfo("XQueryMaps.java", 0, 0);
         Value v = m.get(key, ii);

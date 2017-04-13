@@ -15,6 +15,8 @@ import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Objects;
+
 import org.basex.build.MemBuilder;
 import org.basex.build.SingleParser;
 import org.basex.core.MainOptions;
@@ -55,10 +57,10 @@ public class Walker extends SimpleFileVisitor<Path> {
     private String skipFilter;
     private QueryContext queryContext;
 
-    public Walker(Map options, QueryContext queryContext) throws IOException, QueryException {
+    public Walker(final Map options, QueryContext queryContext) throws IOException, QueryException {
         // options.get("showInfo", null);
-        this.queryContext=queryContext;
-        
+        this.queryContext = queryContext;
+
         showFileInfo = SimpleOptions.mapOption(options, "include-info", false);
         maxFiles = SimpleOptions.mapOption(options, "max-files", Integer.MAX_VALUE);
         includeFilter = SimpleOptions.mapOption(options, "include-filter", null);
@@ -74,8 +76,8 @@ public class Walker extends SimpleFileVisitor<Path> {
     // Print information about
     // each type of file.
     @Override
-    public FileVisitResult visitFile(Path file, BasicFileAttributes attr) throws IOException {
-        String name = file.getFileName().toString();
+    public FileVisitResult visitFile(final Path file, final BasicFileAttributes attr) throws IOException {
+        String name = Objects.toString(file.getFileName(),"");
         boolean use = true;
         if (includeFilter != null) {
             use = name.matches(includeFilter);
@@ -106,13 +108,13 @@ public class Walker extends SimpleFileVisitor<Path> {
     // Print each directory visited.
     @Override
     public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-        String name = dir.getFileName().toString();
-        boolean skip=false;
+        String name = Objects.toString(dir.getFileName(),"");
+        boolean skip = false;
         if (skipFilter != null) {
             skip = name.matches(skipFilter);
         }
-        if (skip) return SKIP_SUBTREE;
-        
+        if (skip)
+            return SKIP_SUBTREE;
         if (filesFound < maxFiles) {
             Atts atts = new Atts();
             atts.add(NAME, Token.token(name));

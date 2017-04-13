@@ -4,11 +4,11 @@ declare variable $large:="Z:\pictures\Pictures";
 declare variable $small:="Z:\recordings\radio";
 declare variable $local:="C:\Users\andy\Desktop\radio";
 let $opts:=map{
-    "include-info":true(),
-    "max-files":6,
-    "exclude-filter":"dd" 
+    "include-info":false(),
+    "max-files":2,
+    "include-filter":"(?).*\.svg" 
 }
-let $r:= fw:directory-list($small,$opts)
+let $r:= fw:directory-list("C:\Users",$opts)
 return $r 
  
 

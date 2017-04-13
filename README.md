@@ -1,20 +1,24 @@
 # file-walker
-File list  and search in the XProc style. 
+Directory file listing. The output uses the format from the XProc `directory-list` step. 
+See https://www.w3.org/TR/xproc/#c.directory-list and
+https://github.com/transpect/xproc-util/blob/master/recursive-directory-list/xpl/recursive-directory-list.xpl
 
-````
+```xquery
 import module namespace fw="quodatum:file.walker";
 declare namespace c="http://www.w3.org/ns/xproc-step";
-fw:directory-list($test:dir,$options)
-````
+let $options:=map{}
+return fw:directory-list("Z:/recordings/",$options)
+```
 ## Options
 
-* max-depth: integer directory depth to scan, -1 all
-* include-info: boolean add @size and @last-modified attributes to o/p
-* max-files: integer stop scanning after finding this number of files
-* follow-links: boolean
-* include-filter:string regex  applied only to file names
-* exclude-filter:string regex  applied only to file names
-* skip-filter:string regex applied only to directory names
+|name|type|default|description
+|max-depth|integer|-1|directory depth to scan, -1 = all
+|include-info|boolean|false|add @size and @last-modified attributes to o/p file and directory nodes
+|max-files|integer||stop scanning after finding this number of files
+|follow-links|boolean|false|follow links
+|include-filter|string|| A regex include only where name matches, applied only to file names
+|exclude-filter|string|| A regex omit where name matches, applied only to file names
+|skip-filter|string|| A regex omit this and children where name matches, applied only to directory names
 
 ## Sample output
 ````
@@ -43,16 +47,18 @@ fw:directory-list($test:dir,$options)
   </directory>
 </directory>
 ````
-see https://www.w3.org/TR/xproc/#c.directory-list
-## file info
-readable    xs:boolean  “true” if the object is readable.
-writable    xs:boolean  “true” if the object file is writable.
-hidden  xs:boolean  “true” if the object is hidden.
-last-modified   xs:dateTime     The last modification time of the object expressed in UTC.
-size    xs:integer  The size of the object in bytes.
-https://www.w3.org/XML/XProc/docs/fileos/#pf-info
 
-## Performance
+## include-info vs file info
+The `include-info` option currently provides the first 2 attributes from the proposed XProc
+step https://www.w3.org/XML/XProc/docs/fileos/#pf-info
+* last-modified   xs:dateTime     The last modification time of the object expressed in UTC.
+* size    xs:integer  The size of the object in bytes.
+* readable    xs:boolean  “true” if the object is readable.
+* writable    xs:boolean  “true” if the object file is writable.
+* hidden  xs:boolean  “true” if the object is hidden.
+
+
+## Performance notes
 Also testing the performance of the built-in file module against 
 a Java `SimpleFileVisitor` implementation.
 https://docs.oracle.com/javase/7/docs/api/java/nio/file/SimpleFileVisitor.html 

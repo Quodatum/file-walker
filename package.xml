@@ -119,5 +119,11 @@
     <version num="0.5.0">
       <!-- generated: {fn:current-dateTime()} -->
     </version>
+    <version num="0.5.1">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
+    <version num="0.5.2">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
   </pkg>
 </repo>

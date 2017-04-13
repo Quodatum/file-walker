@@ -11,7 +11,7 @@ declare variable $test:dir:=$test:odroid;
 declare
   %unit:test
   function test:directory-list() {
-  let $r:=fw:directory-list($test:dir,map{"depth":-1})
+  let $r:=fw:directory-list($test:dir,map{"max-depth":-1})
   let $_:=trace($r//c:file=>count(),"files: ")
   return unit:assert($r)  
 };
