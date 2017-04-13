@@ -12,6 +12,7 @@ return fw:directory-list("Z:/recordings/",$options)
 ## Options
 
 |name|type|default|description
+|----|----|-------|-----------
 |max-depth|integer|-1|directory depth to scan, -1 = all
 |include-info|boolean|false|add @size and @last-modified attributes to o/p file and directory nodes
 |max-files|integer||stop scanning after finding this number of files
