@@ -57,7 +57,8 @@ public class Walker extends SimpleFileVisitor<Path> {
     private String skipFilter;
     private QueryContext queryContext;
 
-    public Walker(final Map options, QueryContext queryContext) throws IOException, QueryException {
+    public Walker(final Map options, QueryContext queryContext)
+            throws IOException, QueryException {
         // options.get("showInfo", null);
         this.queryContext = queryContext;
 
@@ -76,7 +77,8 @@ public class Walker extends SimpleFileVisitor<Path> {
     // Print information about
     // each type of file.
     @Override
-    public FileVisitResult visitFile(final Path file, final BasicFileAttributes attr) throws IOException {
+    public FileVisitResult visitFile(final Path file, final BasicFileAttributes attr)
+            throws IOException {
         String name = Objects.toString(file.getFileName(),"");
         boolean use = true;
         if (includeFilter != null) {
@@ -107,8 +109,9 @@ public class Walker extends SimpleFileVisitor<Path> {
 
     // Print each directory visited.
     @Override
-    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-        String name = Objects.toString(dir.getFileName(),"");
+    public FileVisitResult preVisitDirectory(final Path dir, final BasicFileAttributes attrs)
+            throws IOException {
+        String name = Objects.toString(dir.getFileName(), "");
         boolean skip = false;
         if (skipFilter != null) {
             skip = name.matches(skipFilter);
@@ -132,7 +135,8 @@ public class Walker extends SimpleFileVisitor<Path> {
 
     // Print each directory visited.
     @Override
-    public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+    public FileVisitResult postVisitDirectory(final Path dir, final IOException exc)
+            throws IOException {
         memBuilder.closeElem();
         return CONTINUE;
     }
@@ -143,7 +147,8 @@ public class Walker extends SimpleFileVisitor<Path> {
     // and an error occurs, an IOException
     // is thrown.
     @Override
-    public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
+    public FileVisitResult visitFileFailed(final Path file, final IOException exc)
+            throws IOException {
         String name = file.getFileName().toString();
         Atts atts = new Atts(NAME, Token.token(name));
         memBuilder.emptyElem(C_ERR, atts, NSP);

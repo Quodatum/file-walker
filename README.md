@@ -1,7 +1,9 @@
 # file-walker
-Directory file listing. The output uses the format from the XProc `directory-list` step. 
-See https://www.w3.org/TR/xproc/#c.directory-list and
-https://github.com/transpect/xproc-util/blob/master/recursive-directory-list/xpl/recursive-directory-list.xpl
+`file-walker` produces directory listings for `BaseX`. It produces more structured and detailed results than 
+[`file:list`](http://docs.basex.org/wiki/File#file:list). It also  performs better, often significantly so. 
+The output is XML using the format from the XProc `directory-list` step. 
+See [c.directory-list](https://www.w3.org/TR/xproc/#c.directory-list) and
+[recursive-directory-list.xpl](https://github.com/transpect/xproc-util/blob/master/recursive-directory-list/xpl/recursive-directory-list.xpl)
 
 ```xquery
 import module namespace fw="quodatum:file.walker";
@@ -17,9 +19,9 @@ return fw:directory-list("Z:/recordings/",$options)
 |include-info|boolean|false|add @size and @last-modified attributes to o/p file and directory nodes
 |max-files|integer||stop scanning after finding this number of files
 |follow-links|boolean|false|follow links
-|include-filter|string|| A regex include only where name matches, applied only to file names
-|exclude-filter|string|| A regex omit where name matches, applied only to file names
-|skip-filter|string|| A regex omit this and children where name matches, applied only to directory names
+|include-filter|string|| A Java regex include only where name matches, applied only to file names
+|exclude-filter|string|| A Java regex omit where name matches, applied only to file names
+|skip-filter|string|| A Java regex omit this and children where name matches, applied only to directory names
 
 ## Sample output
 ````
@@ -58,52 +60,22 @@ step https://www.w3.org/XML/XProc/docs/fileos/#pf-info
 * writable    xs:boolean  “true” if the object file is writable.
 * hidden  xs:boolean  “true” if the object is hidden.
 
+## Road map
+* Use XQuery regex
+* allow use of XQuery functions in options to determine inclusion/exclusion
+* return files found within given time 
 
 ## Performance notes
-Also testing the performance of the built-in file module against 
-a Java `SimpleFileVisitor` implementation.
-https://docs.oracle.com/javase/7/docs/api/java/nio/file/SimpleFileVisitor.html 
-The result depends a lot on the environment. Results listing a folder tree containing 25,000 files across a LAN. With version 0.2.8.
-Apart from the ,strange but repeatable, ReadyNAS xq result there is no significant performance gain from the Java implementation. 
-
-### Velvet - ReadyNAS server
-
-````
-velvet
-<testsuites time="PT10M46.481S">
-  <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/test.xqm" time="PT10M46.479S" tests="2" failures="0" errors="0" skipped="0">
-    <testcase name="directory-list" time="PT1M40.283S"/>
-    <testcase name="directory-list-xq" time="PT9M6.185S"/>
+The following shows times for file-walker (with include-info) vs file:list. The first pair of result is for a local tree of 150,000 files. The other pairs are for LAN accessed folders of around 50,000 files.
+```xml
+<testsuites time="PT23M18.847S">
+  <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/performance.xqm" time="PT23M18.846S" tests="6" failures="0" errors="0" skipped="0">
+    <testcase name="directory-list" time="PT12.817S"/>
+    <testcase name="directory-list-xq" time="PT1M1.311S"/>
+    <testcase name="remote-directory-list" time="PT3M7.53S"/>
+    <testcase name="remote-directory-list-xq" time="PT5M17.128S"/>
+    <testcase name="remote-directory-list2" time="PT38.957S"/>
+    <testcase name="remote-directory-list-xq2" time="PT13M1.094S"/>
   </testsuite>
 </testsuites>
-
-<testsuites time="PT10M24.341S">
-  <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/test.xqm" time="PT10M24.341S" tests="2" failures="0" errors="0" skipped="0">
-    <testcase name="directory-list" time="PT1M35.96S"/>
-    <testcase name="directory-list-xq" time="PT8M48.37S"/>
-  </testsuite>
-</testsuites>
-````
-
-### Odroid xu4
-cpuctrl -s -g "powersave" -m 300M -M 1G
-
-````
-<testsuites time="PT8M33.356S">
-  <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/test.xqm" time="PT8M33.352S" tests="2" failures="0" errors="0" skipped="0">
-    <testcase name="directory-list" time="PT4M28.039S"/>
-    <testcase name="directory-list-xq" time="PT4M5.293S"/>
-  </testsuite>
-</testsuites>
-````
-cpuctrl -s  -g performance  -M 1.4G 
-````
-<testsuites time="PT3M31.073S">
-  <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/test.xqm" time="PT3M31.073S" tests="2" failures="0" errors="0" skipped="0">
-    <testcase name="directory-list" time="PT1M45.852S"/>
-    <testcase name="directory-list-xq" time="PT1M45.213S"/>
-  </testsuite>
-</testsuites>
-
-````
-Running directly on the server takes about 44sec.
+```
