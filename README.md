@@ -66,7 +66,7 @@ step https://www.w3.org/XML/XProc/docs/fileos/#pf-info
 * return files found within given time 
 
 ## Performance notes
-The following shows times for file-walker (with include-info) vs file:list. The first pair of result is for a local tree of 150,000 files. The other pairs are for LAN accessed folders of around 50,000 files.
+The following shows times for file-walker (with include-info) vs file:list. The first pair of result is for a local tree of 400,000 files. The other pairs are for LAN accessed folders of around 50,000 files.
 ```xml
 <testsuites time="PT23M18.847S">
   <testsuite name="file:///C:/Users/andy/git/file-walker/src/test/performance.xqm" time="PT23M18.846S" tests="6" failures="0" errors="0" skipped="0">
