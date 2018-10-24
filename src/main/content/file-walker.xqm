@@ -16,7 +16,8 @@ declare variable $xpf:default-options:=map{
 (:~
   : list contents using java
   :)                            
-declare function xpf:directory-list($path as xs:string,$options as map(*)) as element(c:directory)
+declare function xpf:directory-list($path as xs:string,$options as map(*)) 
+as element(c:directory)
 {
 let $options:=xpf:defaults($options)
 return run:filewalk($path,$options)
@@ -24,7 +25,8 @@ return run:filewalk($path,$options)
 };
 
 
-declare function xpf:directory-list($path as xs:string) as element(c:directory)
+declare function xpf:directory-list($path as xs:string) 
+as element(c:directory)
 {
     xpf:directory-list($path,map{})
 };
@@ -32,7 +34,8 @@ declare function xpf:directory-list($path as xs:string) as element(c:directory)
 (:~
   : list contents using xquery
   :)                            
-declare function xpf:directory-list-xq($path as xs:string,$options as map(*)) as element(c:directory)
+declare function xpf:directory-list-xq($path as xs:string,$options as map(*)) 
+as element(c:directory)
 {
 let $options:=xpf:defaults($options)
 return xpf:directory-list-xq2($path ,$options,$options?depth)
@@ -41,7 +44,8 @@ return xpf:directory-list-xq2($path ,$options,$options?depth)
 (:~
   : list contents using xquery
   :)                            
-declare function xpf:directory-list-xq2($path as xs:string,$options as map(*),$depth as xs:integer) as element(c:directory)
+declare function xpf:directory-list-xq2($path as xs:string,$options as map(*),$depth as xs:integer) as 
+element(c:directory)
 {
 let $files:=file:children($path)
 return 
@@ -55,7 +59,8 @@ return
     </c:directory>
 };
 
-declare function xpf:directory-list-xq($path as xs:string) as element(c:directory)
+declare function xpf:directory-list-xq($path as xs:string) 
+as element(c:directory)
 {
     xpf:directory-list-xq($path,map{})
 };

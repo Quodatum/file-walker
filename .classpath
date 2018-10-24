@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/BaseX/BaseX.jar" sourcepath="/basex-core"/>
+	<classpathentry kind="lib" path="lib/BaseX.91.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

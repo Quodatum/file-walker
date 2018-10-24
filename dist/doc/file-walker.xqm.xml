@@ -1,6 +1,6 @@
 <xqdoc:xqdoc xmlns:xqdoc="http://www.xqdoc.org/1.0">
   <xqdoc:control>
-    <xqdoc:date>2017-04-13T13:20:03.169+01:00</xqdoc:date>
+    <xqdoc:date>2018-10-24T22:48:15.994+01:00</xqdoc:date>
     <xqdoc:version>1.1</xqdoc:version>
   </xqdoc:control>
   <xqdoc:module type="library">
@@ -125,11 +125,11 @@
         <xqdoc:description>full path to file</xqdoc:description>
       </xqdoc:comment>
       <xqdoc:name>xpf:resolve-uri</xqdoc:name>
-      <xqdoc:signature>declare function xpf:resolve-uri($c as element(*)) as xs:string</xqdoc:signature>
+      <xqdoc:signature>declare function xpf:resolve-uri($c as element()) as xs:string</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>c</xqdoc:name>
-          <xqdoc:type>element(*)</xqdoc:type>
+          <xqdoc:type>element()</xqdoc:type>
         </xqdoc:parameter>
       </xqdoc:parameters>
       <xqdoc:return>
@@ -141,11 +141,11 @@
         <xqdoc:description>full path to file</xqdoc:description>
       </xqdoc:comment>
       <xqdoc:name>xpf:resolve-path</xqdoc:name>
-      <xqdoc:signature>declare function xpf:resolve-path($c as element(*)) as xs:string</xqdoc:signature>
+      <xqdoc:signature>declare function xpf:resolve-path($c as element()) as xs:string</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>c</xqdoc:name>
-          <xqdoc:type>element(*)</xqdoc:type>
+          <xqdoc:type>element()</xqdoc:type>
         </xqdoc:parameter>
       </xqdoc:parameters>
       <xqdoc:return>
@@ -157,11 +157,11 @@
         <xqdoc:description>file name</xqdoc:description>
       </xqdoc:comment>
       <xqdoc:name>xpf:name</xqdoc:name>
-      <xqdoc:signature>declare function xpf:name($c as element(*)) as xs:string</xqdoc:signature>
+      <xqdoc:signature>declare function xpf:name($c as element()) as xs:string</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>c</xqdoc:name>
-          <xqdoc:type>element(*)</xqdoc:type>
+          <xqdoc:type>element()</xqdoc:type>
         </xqdoc:parameter>
       </xqdoc:parameters>
       <xqdoc:return>

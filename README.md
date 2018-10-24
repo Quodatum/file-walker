@@ -1,6 +1,7 @@
 # file-walker
-`file-walker` produces directory listings for `BaseX`. It produces more structured and detailed results than 
-[`file:list`](http://docs.basex.org/wiki/File#file:list). It also  performs better, often significantly so. 
+`file-walker` generates file system directory listings for `BaseX`. 
+It produces more structured and detailed results than 
+[`file:list`](http://docs.basex.org/wiki/File#file:list). It also performs better, often significantly so. 
 The output is XML using the format from the XProc `directory-list` step. 
 See [c.directory-list](https://www.w3.org/TR/xproc/#c.directory-list) and
 [recursive-directory-list.xpl](https://github.com/transpect/xproc-util/blob/master/recursive-directory-list/xpl/recursive-directory-list.xpl)
@@ -11,6 +12,7 @@ declare namespace c="http://www.w3.org/ns/xproc-step";
 let $options:=map{}
 return fw:directory-list("Z:/recordings/",$options)
 ```
+
 ## Options
 
 |name|type|default|description
@@ -60,6 +62,9 @@ step https://www.w3.org/XML/XProc/docs/fileos/#pf-info
 * writable    xs:boolean  “true” if the object file is writable.
 * hidden  xs:boolean  “true” if the object is hidden.
 
+## History
+
+* v0.6 for use with basex9.1
 ## Road map
 * Use XQuery regex
 * allow use of XQuery functions in options to determine inclusion/exclusion

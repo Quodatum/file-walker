@@ -24,7 +24,7 @@ import org.basex.io.IOContent;
 import org.basex.query.QueryContext;
 import org.basex.query.QueryException;
 import org.basex.query.func.fn.FnTrace;
-import org.basex.query.value.map.Map;
+import org.basex.query.value.map.XQMap;
 import org.basex.query.value.node.ANode;
 import org.basex.query.value.node.DBNode;
 import org.basex.util.Atts;
@@ -57,7 +57,7 @@ public class Walker extends SimpleFileVisitor<Path> {
     private String skipFilter;
     private QueryContext queryContext;
 
-    public Walker(final Map options, QueryContext queryContext)
+    public Walker(final XQMap options, QueryContext queryContext)
             throws IOException, QueryException {
         // options.get("showInfo", null);
         this.queryContext = queryContext;

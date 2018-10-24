@@ -6,17 +6,17 @@ import org.basex.query.value.item.ANum;
 import org.basex.query.value.item.Bln;
 import org.basex.query.value.item.Item;
 import org.basex.query.value.item.Str;
-import org.basex.query.value.map.Map;
+import org.basex.query.value.map.XQMap;
 import org.basex.util.InputInfo;
 import org.basex.util.Token;
 
 public class SimpleOptions {
 
     // get int key from map or default def if missing/invalid
-    static int mapOption(final Map m, final String skey, final int def)
+    static int mapOption(final XQMap m, final String skey, final int def)
             throws QueryException {
         Item key = Str.get(skey);
-        InputInfo ii = new InputInfo("XQueryMaps.java", 0, 0);
+        InputInfo ii = new InputInfo("XQueryXQMaps.java", 0, 0);
         Value v = m.get(key, ii);
         if (v.isEmpty()) {
             return def;
@@ -29,11 +29,11 @@ public class SimpleOptions {
         }
     }
 
-    // get int key from map or default def if missing/invalid
-    static boolean mapOption(final Map m, final String skey, final boolean def)
+    // get int key from XQMap or default def if missing/invalid
+    static boolean mapOption(final XQMap m, final String skey, final boolean def)
             throws QueryException {
         Item key = Str.get(skey);
-        InputInfo ii = new InputInfo("XQueryMaps.java", 0, 0);
+        InputInfo ii = new InputInfo("XQueryXQMaps.java", 0, 0);
         Value v = m.get(key, ii);
         if (v.isEmpty()) {
             return def;
@@ -46,11 +46,11 @@ public class SimpleOptions {
         }
     }
 
-    // get string key from map or default def if missing/invalid
-    static String mapOption(final Map m, final String skey, final String def)
+    // get string key from XQMap or default def if missing/invalid
+    static String mapOption(final XQMap m, final String skey, final String def)
             throws QueryException {
         Item key = Str.get(skey);
-        InputInfo ii = new InputInfo("XQueryMaps.java", 0, 0);
+        InputInfo ii = new InputInfo("XQueryXQMaps.java", 0, 0);
         Value v = m.get(key, ii);
         if (v.isEmpty()) {
             return def;

@@ -16,7 +16,7 @@ import java.util.EnumSet;
 import org.basex.query.QueryException;
 import org.basex.query.QueryModule;
 import org.basex.query.value.Value;
-import org.basex.query.value.map.Map;
+import org.basex.query.value.map.XQMap;
 import org.basex.util.options.BooleanOption;
 import org.basex.util.options.NumberOption;
 import org.basex.util.options.Options;
@@ -37,7 +37,7 @@ public static class RunnerOptions extends Options {
     public static final StringOption SKIP_FILTER = new StringOption("skip-filter");
 }
 
-public Value filewalk(final String path, final Map options) throws IOException, QueryException {
+public Value filewalk(final String path, final XQMap options) throws IOException, QueryException {
     // FnTrace.trace("BY".getBytes(), "TEST".getBytes(), queryContext);
     Path startingDir = Paths.get(path).normalize();
 
