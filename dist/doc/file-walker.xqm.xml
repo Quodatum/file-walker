@@ -1,6 +1,6 @@
 <xqdoc:xqdoc xmlns:xqdoc="http://www.xqdoc.org/1.0">
   <xqdoc:control>
-    <xqdoc:date>2018-10-24T22:48:15.994+01:00</xqdoc:date>
+    <xqdoc:date>2021-08-22T19:33:11.698+01:00</xqdoc:date>
     <xqdoc:version>1.1</xqdoc:version>
   </xqdoc:control>
   <xqdoc:module type="library">
@@ -13,16 +13,16 @@
       <xqdoc:version>0.2</xqdoc:version>
     </xqdoc:comment>
   </xqdoc:module>
-  <xqdoc:namespaces>
-    <xqdoc:namespace prefix="xpf" uri="quodatum:file.walker"/>
-    <xqdoc:namespace prefix="run" uri="java:com.quodatum.file.Runner"/>
-    <xqdoc:namespace prefix="c" uri="http://www.w3.org/ns/xproc-step"/>
-  </xqdoc:namespaces>
   <xqdoc:imports>
     <xqdoc:import type="library">
       <xqdoc:uri>java:com.quodatum.file.Runner</xqdoc:uri>
     </xqdoc:import>
   </xqdoc:imports>
+  <xqdoc:namespaces>
+    <xqdoc:namespace prefix="xpf" uri="quodatum:file.walker"/>
+    <xqdoc:namespace prefix="run" uri="java:com.quodatum.file.Runner"/>
+    <xqdoc:namespace prefix="c" uri="http://www.w3.org/ns/xproc-step"/>
+  </xqdoc:namespaces>
   <xqdoc:variables>
     <xqdoc:variable>
       <xqdoc:name>xpf:default-options</xqdoc:name>
@@ -35,7 +35,7 @@
         <xqdoc:description>list contents using java</xqdoc:description>
       </xqdoc:comment>
       <xqdoc:name>xpf:directory-list</xqdoc:name>
-      <xqdoc:signature>declare function xpf:directory-list($path as xs:string, $options as map(*)) as element(c:directory)</xqdoc:signature>
+      <xqdoc:signature>declare function xpf:directory-list($path as xs:string , $options as map(*)) as element(c:directory)</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>path</xqdoc:name>
@@ -68,7 +68,7 @@
         <xqdoc:description>list contents using xquery</xqdoc:description>
       </xqdoc:comment>
       <xqdoc:name>xpf:directory-list-xq</xqdoc:name>
-      <xqdoc:signature>declare function xpf:directory-list-xq($path as xs:string, $options as map(*)) as element(c:directory)</xqdoc:signature>
+      <xqdoc:signature>declare function xpf:directory-list-xq($path as xs:string , $options as map(*)) as element(c:directory)</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>path</xqdoc:name>
@@ -88,7 +88,7 @@
         <xqdoc:description>list contents using xquery</xqdoc:description>
       </xqdoc:comment>
       <xqdoc:name>xpf:directory-list-xq2</xqdoc:name>
-      <xqdoc:signature>declare function xpf:directory-list-xq2($path as xs:string, $options as map(*), $depth as xs:integer) as element(c:directory)</xqdoc:signature>
+      <xqdoc:signature>declare function xpf:directory-list-xq2($path as xs:string , $options as map(*) , $depth as xs:integer) as element(c:directory)</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>path</xqdoc:name>

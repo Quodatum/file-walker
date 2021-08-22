@@ -58,12 +58,12 @@ The `include-info` option currently provides the first 2 attributes from the pro
 step https://www.w3.org/XML/XProc/docs/fileos/#pf-info
 * last-modified   xs:dateTime     The last modification time of the object expressed in UTC.
 * size    xs:integer  The size of the object in bytes.
-* readable    xs:boolean  “true” if the object is readable.
-* writable    xs:boolean  “true” if the object file is writable.
-* hidden  xs:boolean  “true” if the object is hidden.
+* readable    xs:boolean  ï¿½trueï¿½ if the object is readable.
+* writable    xs:boolean  ï¿½trueï¿½ if the object file is writable.
+* hidden  xs:boolean  ï¿½trueï¿½ if the object is hidden.
 
 ## History
-
+* v0.7 for use with basex9.1 https://github.com/BaseXdb/basex/issues/2027
 * v0.6 for use with basex9.1
 ## Road map
 * Use XQuery regex

@@ -41,7 +41,7 @@ public class Walker extends SimpleFileVisitor<Path> {
     final byte[] LAST_MODIFIED = Token.token("last-modified");
     final byte[] SIZE = Token.token("size");
     final byte[] COUNT = Token.token("count");
-    final Atts NSP = new Atts(Token.token("c"), Token.token("http://www.w3.org/ns/xproc-step"));
+   
 
     SingleParser singleParser = new SingleParser(new IOContent(""), MainOptions.get()) {
         @Override
@@ -56,7 +56,7 @@ public class Walker extends SimpleFileVisitor<Path> {
     private String excludeFilter;
     private String skipFilter;
     private QueryContext queryContext;
-
+    private Atts NSP;
     public Walker(final XQMap options, QueryContext queryContext)
             throws IOException, QueryException {
         // options.get("showInfo", null);
@@ -67,6 +67,8 @@ public class Walker extends SimpleFileVisitor<Path> {
         includeFilter = SimpleOptions.mapOption(options, "include-filter", null);
         excludeFilter = SimpleOptions.mapOption(options, "exclude-filter", null);
         skipFilter = SimpleOptions.mapOption(options, "skip-filter", null);
+        Atts NSP = new Atts();
+        NSP=NSP.add(Token.token("c"), Token.token("http://www.w3.org/ns/xproc-step"));
         memBuilder.init();
     }
 
@@ -90,7 +92,8 @@ public class Walker extends SimpleFileVisitor<Path> {
         if (!use)
             return CONTINUE;
 
-        Atts atts = new Atts(NAME, Token.token(name));
+        Atts atts = new Atts();
+        atts.add(NAME, Token.token(name));
         if (showFileInfo) {
             atts.add(LAST_MODIFIED, Token.token(attr.lastModifiedTime().toString()));
             atts.add(SIZE, Token.token(Long.toString(attr.size())));
@@ -150,7 +153,8 @@ public class Walker extends SimpleFileVisitor<Path> {
     public FileVisitResult visitFileFailed(final Path file, final IOException exc)
             throws IOException {
         String name = file.getFileName().toString();
-        Atts atts = new Atts(NAME, Token.token(name));
+        Atts atts=new Atts();
+        atts.add(NAME, Token.token(name));
         memBuilder.emptyElem(C_ERR, atts, NSP);
         return CONTINUE;
     }
