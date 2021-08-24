@@ -27,6 +27,7 @@ import org.basex.query.func.fn.FnTrace;
 import org.basex.query.value.map.XQMap;
 import org.basex.query.value.node.ANode;
 import org.basex.query.value.node.DBNode;
+import org.basex.server.Log.LogType;
 import org.basex.util.Atts;
 import org.basex.util.Token;
 
@@ -56,18 +57,17 @@ public class Walker extends SimpleFileVisitor<Path> {
     private String excludeFilter;
     private String skipFilter;
     private QueryContext queryContext;
-    private Atts NSP;
+    private Atts NSP =new Atts();
     public Walker(final XQMap options, QueryContext queryContext)
             throws IOException, QueryException {
         // options.get("showInfo", null);
         this.queryContext = queryContext;
-
+        log("walk create");
         showFileInfo = SimpleOptions.mapOption(options, "include-info", false);
         maxFiles = SimpleOptions.mapOption(options, "max-files", Integer.MAX_VALUE);
         includeFilter = SimpleOptions.mapOption(options, "include-filter", null);
         excludeFilter = SimpleOptions.mapOption(options, "exclude-filter", null);
         skipFilter = SimpleOptions.mapOption(options, "skip-filter", null);
-        Atts NSP = new Atts();
         NSP=NSP.add(Token.token("c"), Token.token("http://www.w3.org/ns/xproc-step"));
         memBuilder.init();
     }
@@ -82,6 +82,7 @@ public class Walker extends SimpleFileVisitor<Path> {
     public FileVisitResult visitFile(final Path file, final BasicFileAttributes attr)
             throws IOException {
         String name = Objects.toString(file.getFileName(),"");
+        log("visit-file " + name);
         boolean use = true;
         if (includeFilter != null) {
             use = name.matches(includeFilter);
@@ -91,9 +92,10 @@ public class Walker extends SimpleFileVisitor<Path> {
         }
         if (!use)
             return CONTINUE;
-
+        log("pre-atts " + name);
         Atts atts = new Atts();
         atts.add(NAME, Token.token(name));
+      
         if (showFileInfo) {
             atts.add(LAST_MODIFIED, Token.token(attr.lastModifiedTime().toString()));
             atts.add(SIZE, Token.token(Long.toString(attr.size())));
@@ -115,6 +117,7 @@ public class Walker extends SimpleFileVisitor<Path> {
     public FileVisitResult preVisitDirectory(final Path dir, final BasicFileAttributes attrs)
             throws IOException {
         String name = Objects.toString(dir.getFileName(), "");
+        log("pre-folder " + name);
         boolean skip = false;
         if (skipFilter != null) {
             skip = name.matches(skipFilter);
@@ -122,13 +125,16 @@ public class Walker extends SimpleFileVisitor<Path> {
         if (skip)
             return SKIP_SUBTREE;
         if (filesFound < maxFiles) {
+            log("pre-atts " + name);
             Atts atts = new Atts();
             atts.add(NAME, Token.token(name));
             atts.add(BASE, Token.token(dir.toUri().toString()));
+            log( "post-atts " + name);
             if (showFileInfo) {
                 atts.add(LAST_MODIFIED, Token.token(attrs.lastModifiedTime().toString()));
                 atts.add(SIZE, Token.token(Long.toString(attrs.size())));
             }
+            log( "build " + name);
             memBuilder.openElem(C_DIR, atts, NSP);
             return CONTINUE;
         } else {
@@ -158,4 +164,8 @@ public class Walker extends SimpleFileVisitor<Path> {
         memBuilder.emptyElem(C_ERR, atts, NSP);
         return CONTINUE;
     }
+    
+    private void log(final String msg) {
+    	//queryContext.context.log.write(LogType.INFO, msg, null, queryContext.context);
+        }
 }

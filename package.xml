@@ -1,134 +1,152 @@
 <!-- @see http://cxan.org/faq#add-pkg -->
 <repo abbrev="quodatum-files">
-  <pkg abbrev="quodatum-files" id="https://github.com/Quodatum/file-walker">
-    <name>https://github.com/Quodatum/file-walker</name>
-    <abstract>File list and search in the XProc style</abstract>
-    <author id="abunce">Andy Bunce</author>
-    <maintainer id="abunce">Andy Bunce</maintainer>
-    <category id="libs">Libraries</category>
-    <home>https://github.com/Quodatum/file-walker</home>
-    <tag>file</tag>
-    <tag>xproc</tag>
-    <tag>list</tag>
-    <version num="0.0.1">
-      <dependency processor="basex"/>
-      <file name="file-walker-0.0.1.xar" role="pkg"/>
-    </version>
-    <version num="0.1.0">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.1">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.2">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.3">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.4">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.5">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.6">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.7">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.8">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.9">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.2.0">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.2.3">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.2.4">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.2.5">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.2.6">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.2.7">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.2.8">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.3.0">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.3.1">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.3.2">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.3.3">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.3.5">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.3.6">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.3.7">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.3.8">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.3.9">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.4.0">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.4.1">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.4.2">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.4.3">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.4.4">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.4.5">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.4.6">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.4.7">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.5.0">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.5.1">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.5.2">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-  <version num="0.6.0">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-  <version num="0.7.0">
+	<pkg abbrev="quodatum-files" id="https://github.com/Quodatum/file-walker">
+		<name>https://github.com/Quodatum/file-walker</name>
+		<abstract>File list and search in the XProc style</abstract>
+		<author id="abunce">Andy Bunce</author>
+		<maintainer id="abunce">Andy Bunce</maintainer>
+		<category id="libs">Libraries</category>
+		<home>https://github.com/Quodatum/file-walker</home>
+		<tag>file</tag>
+		<tag>xproc</tag>
+		<tag>list</tag>
+		<version num="0.0.1">
+			<dependency processor="basex"/>
+			<file name="file-walker-0.0.1.xar" role="pkg"/>
+		</version>
+		<version num="0.1.0">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.1.1">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.1.2">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.1.3">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.1.4">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.1.5">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.1.6">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.1.7">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.1.8">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.1.9">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.2.0">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.2.3">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.2.4">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.2.5">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.2.6">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.2.7">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.2.8">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.3.0">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.3.1">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.3.2">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.3.3">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.3.5">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.3.6">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.3.7">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.3.8">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.3.9">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.4.0">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.4.1">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.4.2">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.4.3">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.4.4">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.4.5">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.4.6">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.4.7">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.5.0">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.5.1">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.5.2">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.6.0">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.7.0">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.8.0">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.8.1">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.8.2">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.8.3">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+		<version num="0.8.4">
+			<!-- generated: {fn:current-dateTime()} -->
+		</version>
+	<version num="0.8.6">
       <!-- generated: {fn:current-dateTime()} -->
     </version>
   </pkg>

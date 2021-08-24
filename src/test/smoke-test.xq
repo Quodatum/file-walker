@@ -4,10 +4,9 @@ declare variable $large:="Z:\pictures\Pictures";
 declare variable $small:="Z:\recordings\radio";
 declare variable $local:="C:\Users\andy\Desktop\radio";
 let $opts:=map{
-    "include-info":false(),
-    "max-files":8,
-    "include-filter":"cxan",
-    "skip-filter":"AppData"
+    "include-info":true(),
+    "max-files":5
+   
 }
 let $r:= fw:directory-list("C:\Users\Andy",$opts)
 let $a:=copy $c:=$r 

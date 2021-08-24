@@ -1,10 +1,10 @@
 <package xmlns="http://cxan.org/ns/package" id="quodatum-files">
-    <abstract>File list and search in the XProc style</abstract>
-    <author id="abunce">Andy Bunce</author>
-    <maintainer id="abunce">Andy Bunce</maintainer>
-    <home>https://github.com/Quodatum/file-walker</home>
-    <category id="libs">Library</category>
-    <tag>file</tag>
-    <tag>xproc</tag>
-    <tag>list</tag>
+	<abstract>File list and search in the XProc style</abstract>
+	<author id="abunce">Andy Bunce</author>
+	<maintainer id="abunce">Andy Bunce</maintainer>
+	<home>https://github.com/Quodatum/file-walker</home>
+	<category id="libs">Library</category>
+	<tag>file</tag>
+	<tag>xproc</tag>
+	<tag>list</tag>
 </package>
