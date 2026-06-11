@@ -2,10 +2,9 @@ package com.quodatum.file;
 
 /*
  * file walker
- * @author andy bunce
- * @copyright Quodatum Ltd
- * @date 2015-2017
- * @licence Apache 2
+ * @copyright Andy Bunce
+ * @date 2015-2026
+ * @license Apache 2
  * @see https://docs.oracle.com/javase/7/docs/api/java/nio/file/FileVisitResult.html
  */
 import static java.nio.file.FileVisitResult.*;
@@ -25,9 +24,9 @@ import org.basex.query.QueryContext;
 import org.basex.query.QueryException;
 import org.basex.query.func.fn.FnTrace;
 import org.basex.query.value.map.XQMap;
-import org.basex.query.value.node.ANode;
+import org.basex.query.value.node.XNode;
 import org.basex.query.value.node.DBNode;
-import org.basex.server.Log.LogType;
+import org.basex.util.log.LogType;
 import org.basex.util.Atts;
 import org.basex.util.Token;
 
@@ -43,8 +42,7 @@ public class Walker extends SimpleFileVisitor<Path> {
     final byte[] SIZE = Token.token("size");
     final byte[] COUNT = Token.token("count");
    
-
-    SingleParser singleParser = new SingleParser(new IOContent(""), MainOptions.get()) {
+    SingleParser singleParser = new SingleParser(new IOContent(""), new MainOptions()) {
         @Override
         protected void parse() throws IOException {
         }
@@ -72,7 +70,7 @@ public class Walker extends SimpleFileVisitor<Path> {
         memBuilder.init();
     }
 
-    public ANode result() {
+    public XNode result() {
         return new DBNode(memBuilder.data());
     }
 

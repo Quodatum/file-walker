@@ -1,0 +1,11 @@
+<build>
+    <artifact destdir="build/lib">     
+        <jar name="org/basex:basex" version="12.4"/>
+    </artifact>
+    <javac  srcdir="src/java/" classpath="build/lib/*"
+            source="17" target="17"
+            destdir="build/class"/>
+    
+    <jar dest="build/file-walker-12.4.jar" class="build/class" />
+    
+</build>

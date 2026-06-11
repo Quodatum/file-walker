@@ -16,8 +16,8 @@ public class SimpleOptions {
     static int mapOption(final XQMap m, final String skey, final int def)
             throws QueryException {
         Item key = Str.get(skey);
-        InputInfo ii = new InputInfo("XQueryXQMaps.java", 0, 0);
-        Value v = m.get(key, ii);
+       
+        Value v = m.get(key);
         if (v.isEmpty()) {
             return def;
         }
@@ -33,8 +33,8 @@ public class SimpleOptions {
     static boolean mapOption(final XQMap m, final String skey, final boolean def)
             throws QueryException {
         Item key = Str.get(skey);
-        InputInfo ii = new InputInfo("XQueryXQMaps.java", 0, 0);
-        Value v = m.get(key, ii);
+
+        Value v = m.get(key);
         if (v.isEmpty()) {
             return def;
         }
@@ -50,8 +50,8 @@ public class SimpleOptions {
     static String mapOption(final XQMap m, final String skey, final String def)
             throws QueryException {
         Item key = Str.get(skey);
-        InputInfo ii = new InputInfo("XQueryXQMaps.java", 0, 0);
-        Value v = m.get(key, ii);
+       
+        Value v = m.get(key);
         if (v.isEmpty()) {
             return def;
         }

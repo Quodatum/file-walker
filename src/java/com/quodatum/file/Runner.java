@@ -1,10 +1,9 @@
 package com.quodatum.file;
 
 /*
- * @author andy bunce
- * @copyright Quodatum Ltd
- * @date 2015-2017
- * @licence Apache 2
+ * @copyright andy bunce Quodatum Org
+ * @date 2015-2026
+ * @license Apache 2
  */
 import java.io.IOException;
 import java.nio.file.FileVisitOption;
@@ -17,7 +16,7 @@ import org.basex.query.QueryException;
 import org.basex.query.QueryModule;
 import org.basex.query.value.Value;
 import org.basex.query.value.map.XQMap;
-import org.basex.server.Log.LogType;
+import org.basex.util.log.LogType;
 import org.basex.util.options.BooleanOption;
 import org.basex.util.options.NumberOption;
 import org.basex.util.options.Options;
